@@ -36,8 +36,7 @@ public class User {
 	/*@OneToMany(cascade=CascadeType.ALL, mappedBy = "STID")
 	Set<UserStatistics> statistics = new HashSet<UserStatistics>();*/
 	
-	@OneToOne
-	@JoinColumn(name = "STID")
+	@OneToOne(mappedBy = "user")
 	UserStatistics statistics ;
 
 	public Set<UserResponse> getResponse() {
@@ -179,8 +178,5 @@ public class User {
 		return "User [UID=" + UID + ", username=" + username + ", password=" + password + ", email=" + email
 				+ ", phoneno=" + phoneno + ", dob=" + dob + ", role=" + role +"";
 	}
-
-	
-	
 
 }
