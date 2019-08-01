@@ -1,0 +1,158 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">e-PRECAT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" *ngIf="!userloggedIn">
+          <a class="nav-link active" href="#" data-toggle="modal" data-target="#signinModalCenter">Login <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li *ngIf="userloggedIn">
+          <p style="color: white">Welcome {{ uuuu }}</p>
+        </li>
+        <li class="nav-item" *ngIf="userloggedIn">
+          <a class="nav-link active"  data-toggle="modal" data-target="#signinModalCenter" (click)="onLogout()">Logout <span
+              class="sr-only">(current)</span></a>
+        </li>
+        <!--
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+       
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      -->
+      </ul>
+  
+    </div>
+  </nav>
+  
+  
+  
+  <!-- Modal -->
+  <div class="modal fade" id="signinModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header position-relative text-center">
+          <h5 class="modal-title w-100" id="exampleModalLongTitle">Login</h5>
+          <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="username" placeholder="Username" required>
+            </div>
+            <!-- <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+              <div *ngIf="username.errors.required">
+                username is required.
+              </div>
+              <div *ngIf="username.errors.minlength">
+                userame must be at least 8 characters long.
+              </div>
+              <div *ngIf="username.errors.maxlength">
+                userame must be at most 20 characters long.
+              </div>
+            </div> -->
+            <div class="form-group">
+              <input type="password" class="form-control" formControlName="password" placeholder="Password" required>
+            </div>
+            <!-- <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+              <div *ngIf="password.errors.required">
+                password is required.
+              </div>
+              <div *ngIf="password.errors.minlength">
+                userame must be at least 8 characters long.
+              </div>
+              <div *ngIf="password.errors.maxlength">
+                userame must be at most 20 characters long.
+              </div>
+            </div> -->
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer mx-auto">
+          <a href="#" data-toggle="modal" data-target="#registerModalCenter" data-dismiss="modal">New Registration</a>
+        </div>
+  
+  
+  
+  
+  
+      </div>
+    </div>
+  </div>
+  
+  <!-- register Modal -->
+   <div class="modal fade" id="registerModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header position-relative text-center">
+          <h5 class="modal-title w-100" id="exampleModalLongTitle">Register</h5>
+          <button type="button" class="close position-absolute" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="rusername" placeholder="Username" required="required">
+            </div>
+            <!-- <div *ngIf="rusername.errors.required">
+              userame is required.
+            </div>
+            <div *ngIf="rusername.errors.minlength">
+              username must be at least 8 characters long.
+            </div>
+            <div *ngIf="rusername.errors.maxlength">
+              userame must be at max 20 characters long.
+            </div> -->
+            <div class="form-group">
+              <input type="rpassword" class="form-control" formControlName="rpassword" placeholder="Password" required="required">
+            </div>
+            <!-- <div *ngIf="rpassword.errors.required">
+              password is required.
+            </div>
+            <div *ngIf="rpassword.errors.minlength">
+              password must be at least 8 characters long.
+            </div>
+            <div *ngIf="password.errors.maxlength">
+              password must be at max 20 characters long.
+            </div> -->
+            <div class="form-group">
+              <input type="password" class="form-control" formControlName="cpassword" placeholder="Confirm Password" required="required">
+            </div>
+            <!-- <div *ngIf="password.errors.required">
+              password is required.
+            </div> -->
+            
+            
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Register</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer mx-auto">
+          <a href="#"></a>
+        </div>
+      </div>
+    </div>
+  </div> 
